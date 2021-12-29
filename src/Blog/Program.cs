@@ -112,7 +112,7 @@ GitHub:<a href=""https://github.com/itoyokandev/"">itoyokandev</a>
 // Create footer.
 var footer = @"<ul>
 <li>Index: <a href=""https://itoyokan.dev"">itoyokandev</a></li>
-<li>Powered by: <a href=""https://github.com/itoyokandev/Blog1"">https://github.com/itoyokandev/Blog1</a></li>
+<li>Powered by: <a href=""https://github.com/itoyokandev/Blog"">https://github.com/itoyokandev/Blog</a></li>
 </ul>";
 
 // Generate Root Index.

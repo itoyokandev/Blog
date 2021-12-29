@@ -117,6 +117,4 @@ nuget/*.unitypackage
 .idea/
 
 # Others
-tools/WordPressExporter/wp_posts.xml
-
-src/Blog1/Properties/launchSettings.json
+src/Blog/Properties/launchSettings.json

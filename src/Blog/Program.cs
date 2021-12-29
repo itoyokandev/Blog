@@ -92,7 +92,7 @@ var articles = Directory.EnumerateFiles(inputDir)
 var sideArchives = articles
     .GroupBy(x => (x.Url.yyyy, x.Url.mm))
     .OrderByDescending(x => x.Key)
-    .Select(x => $"<li><a href=\"https://itoyokan.dev/{x.Key.yyyy}/{x.Key.mm}/\">{x.Key.yyyy}-{x.Key.mm}</a>");
+    .Select(x => $"<li><a href=\"https://itoyokan.dev/{x.Key.yyyy}/{x.Key.mm}/\">{x.Key.yyyy}-{x.Key.mm}</a></li>");
 
 var side = $@"
 <h3>Profile</h3>
@@ -111,8 +111,8 @@ GitHub:<a href=""https://github.com/itoyokandev/"">itoyokandev</a>
 
 // Create footer.
 var footer = @"<ul>
-<li>Index: <a href=""https://itoyokan.dev"">itoyokandev</a><li>
-<li>Powered by: <a href=""https://github.com/itoyokandev/Blog1"">https://github.com/itoyokandev/Blog1</a>
+<li>Index: <a href=""https://itoyokan.dev"">itoyokandev</a></li>
+<li>Powered by: <a href=""https://github.com/itoyokandev/Blog1"">https://github.com/itoyokandev/Blog1</a></li>
 </ul>";
 
 // Generate Root Index.
@@ -147,6 +147,35 @@ await Parallel.ForEachAsync(articles.GroupBy(x => x.Url.yyyy), async (yyyy, _) =
 // end
 Console.WriteLine("Completed: " + sw.Elapsed);
 
+string CreateDirectory(string root, string path)
+{
+    var dir = Path.Combine(root, path);
+    if (!Directory.Exists(dir))
+    {
+        Directory.CreateDirectory(dir);
+    }
+    return dir;
+}
+
+(string FirstLine, string others) ReadAllTextWithoutFirstLine(string path)
+{
+    var lines = File.ReadAllLines(path);
+    string? first = null;
+    var others = new StringBuilder();
+    foreach (var line in lines)
+    {
+        if (first == null)
+        {
+            // title # xxx
+            first = line;
+        }
+        else
+        {
+            others.AppendLine(line);
+        }
+    }
+    return (first!, others.ToString());
+}
 
 async Task GenerateIndexWithPagingAsync(IEnumerable<Article> source, string root, string? title)
 {
@@ -192,36 +221,6 @@ async Task GenerateIndexWithPagingAsync(IEnumerable<Article> source, string root
 
         page++;
     }
-}
-
-string CreateDirectory(string root, string path)
-{
-    var dir = Path.Combine(root, path);
-    if (!Directory.Exists(dir))
-    {
-        Directory.CreateDirectory(dir);
-    }
-    return dir;
-}
-
-(string FirstLine, string others) ReadAllTextWithoutFirstLine(string path)
-{
-    var lines = File.ReadAllLines(path);
-    string? first = null;
-    var others = new StringBuilder();
-    foreach (var line in lines)
-    {
-        if (first == null)
-        {
-            // title # xxx
-            first = line;
-        }
-        else
-        {
-            others.Append(line);
-        }
-    }
-    return (first!, others.ToString());
 }
 
 public record Article(string Title, string Body, PageUrl Url, string OriginalBody) : IComparable<Article>

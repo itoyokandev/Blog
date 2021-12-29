@@ -33,13 +33,7 @@ abbr,acronym { border:0;
 
 /*Format----------------------------------------*/
 
-A:link{color:#c10000;}
-A:visited{color:#c10000;}
-A:active{color:#e10000;}
-A:hover{color:#e10000;}
-
 *{
-	color:#9ba29f;
 	margin:0px;
 	padding:0px;
 	border-width:0px;
@@ -56,7 +50,6 @@ body{
 	width:100%;
 	height:100%;
 	font-size:14px;
-	background:#000000 url(images/background.jpg) no-repeat fixed center top;
 	text-align:center;
 }
 
@@ -166,7 +159,6 @@ h1{
 	font-size:18px;
 	width:650px;
 	height:25px;
-	background:url(images/brline.png) bottom no-repeat;
 	margin:13px 0px 5px 0px;
 	padding:0px 0px 6px 10px;
 }
@@ -404,7 +396,6 @@ textarea{
 }
 
 pre {
-  color: #000000;
   margin: 0;
   width: auto;
   float: none;

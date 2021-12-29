@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Blog": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\projects\\Blog\\articles C:\\projects\\Blog\\publish"
+    }
+  }
+}

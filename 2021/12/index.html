@@ -81,6 +81,19 @@ Custom domainの設定については、以下のページを参照して設定<
 <li><p>Add fileをクリックして、.nojekyllファイルとstyle.cssを追加、アップロードする。</p>
 </li>
 <li><p><a href="https://github.com/neuecc/Blog2">Blog2</a>をローカル環境で自身のブログ用に修正して、mainブランチにpushする。</p>
+<ul>
+<li>/.github/workflows/build.ymlについて<br>
+リリースビルド実行後、./publishディレクトリにhtmlファイルやファルダが出力される。<br>
+publish_dirで./publishディレクトリを指定する。出力ディレクトリを変更する場合、あわせて変更する。<br>
+<pre><code>- run: dotnet run --project ./src/Blog/Blog.csproj -c Release -- ./articles ./publish
+- uses: peaceiris/actions-gh-pages@v3
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./publish
+    keep_files: true
+</code></pre>
+</li>
+</ul>
 </li>
 <li><p>mdファイルを修正・追加して、pushするとworkflowが実行される。
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/5250643/147713404-5685cde6-df79-4f95-bc5f-be4b0a07b508.png"></p>

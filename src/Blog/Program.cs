@@ -33,6 +33,15 @@ static string BuildHtml(string title, string content, string side, string footer
 	<link rel=""stylesheet"" href=""https://itoyokan.dev/style.css"" type=""text/css"" media=""screen"" />
     <link href=""https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"" rel=""stylesheet"" />
     {og}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-RQBFYHS98S""></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag(""js"", new Date());
+
+  gtag(""config"", ""G-RQBFYHS98S"");
+</script>
  </head>
 <body>
 	<script src=""https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-core.min.js""></script>
